@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   libffi-dev \
   libfontconfig \
   libgdbm-dev \
-  libgdbm3 \
+  libgdbm5 \
   libjemalloc-dev \
   libncurses5-dev \
   libreadline6-dev \
