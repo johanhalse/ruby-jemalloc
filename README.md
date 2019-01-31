@@ -1,8 +1,9 @@
 This repository contains all the necessary files to compile Ruby and package it into a .deb file.
 
-This guide uses an Ubuntu 14.04 (Trusty) Docker image as a base. If you need something else, create a new branch and edit the [Dockerfile](Dockerfile). Docker ensures we have a clean environment with dependencies that match our production setup.
+This guide uses an Ubuntu 18.04 (Bionic) Docker image as a base. If you need something else, create a new branch and edit the [Dockerfile](Dockerfile). Docker ensures we have a clean environment with dependencies that match our production setup.
 
 ### Using a Custom Ruby Definition
+
 [Ruby-Build](https://github.com/rbenv/ruby-build) is a tool that abstracts away some of the pains of manually compiling Ruby.
 It uses `definition` files to give instructions on how to build Ruby.
 
@@ -21,11 +22,13 @@ Build the Docker Image using this repository as a context and `ruby-jemalloc` as
 **If you are using a branch other than _master_, check the [documentation](https://docs.docker.com/engine/reference/commandline/build/#git-repositories) so you can modify the command below.**
 
 Using GitHub SSH:
+
 ```shell
 $ docker build git@github.com:myfreecomm/ruby-jemalloc.git -t ruby-jemalloc
 ```
 
 Or using GitHub HTTPS:
+
 ```shell
 $ docker build https://github.com/myfreecomm/ruby-jemalloc.git -t ruby-jemalloc
 ```
@@ -33,17 +36,25 @@ $ docker build https://github.com/myfreecomm/ruby-jemalloc.git -t ruby-jemalloc
 This may take a while for the first time.
 
 Once the build is complete, run the image with a bash entrypoint:
+
 ```shell
-$ docker run -it ruby-jemalloc bash
+$ docker run -it ruby-jemalloc --name ruby-build bash
 ```
 
 Now you are inside the Docker image and ready to compile Ruby.
 
 Run the following command with the desired Ruby version.
+
 ```shell
 $ ./compile_and_build.sh 2.3.8
 ```
 
 This will compile Ruby and build the `.deb` package.
 
-To publish the package to Gemfury, read [this documentation.](https://3.basecamp.com/3588114/buckets/1781679/documents/596545723)
+From another terminal window, copy the resulting .deb file to your host computer:
+
+```shell
+docker cp ruby-jemalloc:/tmp/ruby-build/ruby-jemalloc-1548924463.deb .
+```
+
+Now you can upload it to S3 and install it via ansible!

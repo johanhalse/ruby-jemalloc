@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   libreadline6-dev \
   libssl-dev \
   libyaml-dev \
+  openssl \
   zlib1g-dev
 
 COPY . .
