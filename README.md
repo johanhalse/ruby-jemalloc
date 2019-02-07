@@ -49,12 +49,10 @@ Run the following command with the desired Ruby version.
 $ ./compile_and_build.sh 2.3.8
 ```
 
-This will compile Ruby and build the `.deb` package.
-
-From another terminal window, copy the resulting .deb file to your host computer:
+This will compile Ruby and build the `.deb` package. It shows you the path at the very end. From another terminal window, find your docker pid with `docker ps` and then copy the resulting .deb file to your host computer:
 
 ```shell
-docker cp ruby-jemalloc:/tmp/ruby-build/ruby-jemalloc-1548924463.deb .
+docker cp DOCKER_PID:/tmp/ruby-build/ruby-jemalloc-1548924463.deb .
 ```
 
 Now you can upload it to S3 and install it via ansible!
