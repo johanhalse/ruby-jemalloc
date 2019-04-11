@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   libjemalloc-dev \
   libncurses5-dev \
   libreadline6-dev \
-  libssl1.0-dev \
+  libssl-dev \
   libyaml-dev \
   zlib1g-dev
 
