@@ -20,7 +20,7 @@ mkdir $RUBY_BUILD_DIR
 mkdir $COMPILE_DEST
 
 echo "Copying DEBIAN directory"
-cp -r /DEBIAN $COMPILE_DEST
+cp -r DEBIAN $COMPILE_DEST
 
 echo "Creating definition file"
 touch $DEFINITION_FILE

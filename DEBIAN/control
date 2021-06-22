@@ -1,7 +1,7 @@
 Package: ruby-jemalloc
-Version: 2.3.8
+Version: 3.0.1
 Section: ruby
 Priority: optional
 Architecture: amd64
-Maintainer: Nexaas <packages@nexaas.com>
+Maintainer: Johan Halse <johan@hal.se>
 Description: Ruby compiled with jemalloc
